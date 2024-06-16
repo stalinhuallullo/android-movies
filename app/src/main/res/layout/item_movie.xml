@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="movie"
+            type="peruapps.movies.presentation.movie.MovieModel" />
+
+        <variable
+            name="adapter"
+            type="peruapps.movies.presentation.movie.ListMoviesAdapter" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/contentView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:onClick="@{()-> adapter.onClickItem(movieImage, movie) }"
+        android:orientation="vertical">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="0dp"
+            app:cardUseCompatPadding="true">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/movieImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:transitionName="@string/movie_transition"
+                    app:image="@{movie}"
+                    tools:src="@drawable/any" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/titleText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginBottom="12dp"
+                    android:text="@{movie.detail.title}"
+                    android:textColor="@android:color/white"
+                    android:textSize="24sp"
+                    app:fontFamily="@font/quicksand_bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:text="Title" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/detailText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="4dp"
+            android:ellipsize="end"
+            android:lineSpacingExtra="2dp"
+            android:lines="2"
+            android:maxLines="2"
+            android:text="@{movie.detail.description}"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            app:fontFamily="@font/quicksand_regular"
+            tools:text="Description" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
+                android:ellipsize="end"
+                android:maxLines="3"
+                android:text="@string/movie_rating"
+                android:textColor="@android:color/black"
+                app:fontFamily="@font/quicksand_regular" />
+
+            <androidx.appcompat.widget.AppCompatRatingBar
+                style="?android:attr/ratingBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:progressTint="@color/colorPrimary"
+                android:rating="4" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="12dp">
+
+            <com.google.android.material.chip.Chip
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="2dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/quicksand_light"
+                android:outlineProvider="background"
+                android:text="@string/chip_action"
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimary"
+                app:chipBackgroundColor="@android:color/white"
+                app:chipStrokeColor="@color/colorPrimary"
+                app:chipStrokeWidth="2dp" />
+
+            <com.google.android.material.chip.Chip
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+                android:layout_marginEnd="1dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/quicksand_light"
+                android:outlineProvider="background"
+                android:text="@string/chip_drama"
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimary"
+                app:chipBackgroundColor="@android:color/white"
+                app:chipStrokeColor="@color/colorPrimary"
+                app:chipStrokeWidth="2dp" />
+
+            <com.google.android.material.chip.Chip
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/quicksand_light"
+                android:outlineProvider="background"
+                android:text="@string/chip_history"
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimary"
+                app:chipBackgroundColor="@android:color/white"
+                app:chipStrokeColor="@color/colorPrimary"
+                app:chipStrokeWidth="2dp" />
+
+        </LinearLayout>
+    </LinearLayout>
+</layout>

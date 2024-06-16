@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".presentation.detail.DetailMovieActivity">
+
+    <data class="ActivityDetailMovieMovieBinding">
+
+        <variable
+            name="viewModel"
+            type="peruapps.movies.presentation.detail.DetailMovieViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
+        android:fitsSystemWindows="false"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/movieImage"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:scaleType="centerCrop"
+                android:transitionName="@string/movie_transition"
+                app:img="@{viewModel.movie}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="16:9"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:srcCompat="@drawable/any" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/backButton"
+                android:layout_width="@dimen/size40"
+                android:layout_height="@dimen/size40"
+                android:layout_marginStart="@dimen/dp12"
+                android:layout_marginTop="@dimen/dp32"
+                android:insetLeft="0dp"
+                android:insetTop="0dp"
+                android:insetRight="0dp"
+                android:insetBottom="0dp"
+                android:rotation="180"
+                android:stateListAnimator="@null"
+                app:backgroundTint="@android:color/transparent"
+                app:cornerRadius="@dimen/dp20"
+                app:elevation="0dp"
+                app:icon="@drawable/ic_arrow"
+                app:iconGravity="textStart"
+                app:iconPadding="0dp"
+                app:iconSize="@dimen/size24"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/titleText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp20"
+                    android:layout_marginTop="@dimen/dp12"
+                    android:layout_marginEnd="@dimen/dp20"
+                    android:text="@{viewModel.movie.detail.title}"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/sp20"
+                    app:fontFamily="@font/quicksand_bold"
+                    tools:text="Title" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp20"
+                    android:layout_marginTop="@dimen/dp12"
+                    android:layout_marginEnd="@dimen/dp20"
+                    android:text="@string/detail_movie_info"
+                    android:textSize="@dimen/sp12"
+                    app:fontFamily="@font/quicksand_bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp20"
+                    android:layout_marginTop="@dimen/dp12"
+                    android:layout_marginEnd="@dimen/dp20">
+
+                    <com.google.android.material.chip.Chip
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/dp2"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/quicksand_light"
+                        android:outlineProvider="background"
+                        android:text="@string/chip_action"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorPrimary"
+                        app:chipBackgroundColor="@android:color/white"
+                        app:chipStrokeColor="@color/colorPrimary"
+                        app:chipStrokeWidth="@dimen/dp2" />
+
+                    <com.google.android.material.chip.Chip
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dp1"
+                        android:layout_marginEnd="@dimen/dp1"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/quicksand_light"
+                        android:outlineProvider="background"
+                        android:text="@string/chip_drama"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorPrimary"
+                        app:chipBackgroundColor="@android:color/white"
+                        app:chipStrokeColor="@color/colorPrimary"
+                        app:chipStrokeWidth="@dimen/dp2" />
+
+                    <com.google.android.material.chip.Chip
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dp2"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/quicksand_light"
+                        android:outlineProvider="background"
+                        android:text="@string/chip_history"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorPrimary"
+                        app:chipBackgroundColor="@android:color/white"
+                        app:chipStrokeColor="@color/colorPrimary"
+                        app:chipStrokeWidth="@dimen/dp2" />
+
+                </LinearLayout>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp20"
+                    android:layout_marginTop="@dimen/dp12"
+                    android:layout_marginEnd="@dimen/dp20"
+                    android:lineSpacingExtra="@dimen/dp2"
+                    android:text="@string/detail_plot_summary"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/sp16"
+                    app:fontFamily="@font/quicksand_semibold" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/descriptionText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp20"
+                    android:layout_marginTop="@dimen/dp12"
+                    android:layout_marginEnd="@dimen/dp20"
+                    android:lineSpacingExtra="@dimen/dp2"
+                    android:text="@{viewModel.movie.detail.description}"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/sp16"
+                    app:fontFamily="@font/quicksand_regular"
+                    tools:text="Description" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp20"
+                    android:layout_marginTop="@dimen/dp12"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/dp4"
+                        android:ellipsize="end"
+                        android:maxLines="3"
+                        android:text="@string/movie_rating"
+                        android:textColor="@android:color/black"
+                        app:fontFamily="@font/quicksand_regular" />
+
+                    <androidx.appcompat.widget.AppCompatRatingBar
+                        style="?android:attr/ratingBarStyleSmall"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:progressTint="@color/colorPrimary"
+                        android:rating="4" />
+
+                </LinearLayout>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp20"
+                    android:layout_marginTop="@dimen/dp12"
+                    android:layout_marginEnd="@dimen/dp20"
+                    android:lineSpacingExtra="@dimen/dp2"
+                    android:text="@string/detail_title_cast"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/sp16"
+                    app:fontFamily="@font/quicksand_semibold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp20"
+                    android:layout_marginTop="@dimen/dp16"
+                    android:layout_marginEnd="@dimen/dp20"
+                    android:baselineAligned="true"
+                    android:paddingBottom="@dimen/dp20">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:adjustViewBounds="true"
+                            android:src="@drawable/ic_arrow"
+                            app:imageCircle="@{@drawable/actor1}"
+                            app:srcCompat="@drawable/ic_arrow" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dp4"
+                            android:gravity="center"
+                            android:text="@string/place_name1"
+                            android:textColor="@android:color/black"
+                            app:fontFamily="@font/quicksand_medium" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="@string/place_rol1"
+                            app:fontFamily="@font/quicksand_regular" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginEnd="6dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:adjustViewBounds="true"
+                            android:src="@drawable/ic_arrow"
+                            app:imageCircle="@{@drawable/actor2}"
+                            app:srcCompat="@drawable/ic_arrow" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dp4"
+                            android:gravity="center"
+                            android:text="@string/place_name2"
+                            android:textColor="@android:color/black"
+                            app:fontFamily="@font/quicksand_medium" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="@string/place_rol2"
+                            app:fontFamily="@font/quicksand_regular" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:layout_marginEnd="4dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:adjustViewBounds="true"
+                            android:src="@drawable/ic_arrow"
+                            app:imageCircle="@{@drawable/actor3}"
+                            app:srcCompat="@drawable/ic_arrow" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dp4"
+                            android:gravity="center"
+                            android:text="@string/place_name3"
+                            android:textColor="@android:color/black"
+                            app:fontFamily="@font/quicksand_medium" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="@string/place_rol3"
+                            app:fontFamily="@font/quicksand_regular" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:adjustViewBounds="true"
+                            android:src="@drawable/ic_arrow"
+                            app:imageCircle="@{@drawable/actor4}"
+                            app:srcCompat="@drawable/ic_arrow" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dp4"
+                            android:gravity="center"
+                            android:text="@string/place_name4"
+                            android:textColor="@android:color/black"
+                            app:fontFamily="@font/quicksand_medium" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="@string/place_rol4"
+                            app:fontFamily="@font/quicksand_regular" />
+
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</layout>
